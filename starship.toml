@@ -7,7 +7,7 @@ $hostname\
 $username\
 [](bg:color_yellow fg:color_orange)\
 $directory\
-[](fg:color_yellow bg:color_aqua)\
+[ ](fg:color_yellow bg:color_aqua)\
 $git_branch\
 $git_status\
 [](fg:color_aqua bg:color_blue)\
@@ -20,20 +20,26 @@ $java\
 $kotlin\
 $haskell\
 $python\
-[](fg:color_blue bg:color_bg3)\
+[](fg:color_blue bg:color_bg4)\
+$ruby\
+[](fg:color_bg4 bg:color_bg3)\
 $docker_context\
 $conda\
 [](fg:color_bg3 bg:color_bg1)\
 $time\
-[ ](fg:color_bg1)\
-$line_break$character"""
+$cmd_duration\
+[](fg:color_bg1)
+$line_break$character
+"""
 
 palette = 'gruvbox_dark'
+add_newline = true
 
 [palettes.gruvbox_dark]
 color_fg0 = '#fbf1c7'
 color_bg1 = '#3c3836'
 color_bg3 = '#665c54'
+color_bg4 = '#B03052'
 color_blue = '#458588'
 color_aqua = '#689d6a'
 color_green = '#98971a'
@@ -147,7 +153,15 @@ format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_blue)]($style)'
 [python]
 symbol = ""
 style = "bg:color_blue"
-format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_blue)]($style)'
+format = '[[ $symbol( $version) (\($virtualenv\))](fg:color_fg0 bg:color_blue)]($style)'
+
+[ruby]
+symbol = ''
+style = 'bg:color_bg4'
+format = '[[ $symbol( $version) (\($rbenv_version\))](fg:color_fg0 bg:color_bg4)]($style)'
+disabled = false
+detect_files = ['.ruby-version']
+detect_variables = ['RBENV_VERSION']
 
 [docker_context]
 symbol = ""
@@ -164,8 +178,14 @@ time_format = "%R"
 style = "bg:color_bg1"
 format = '[[  $time ](fg:color_fg0 bg:color_bg1)]($style)'
 
+
+[cmd_duration]
+style = "bg:color_bg1"
+format = '[[  $duration ](fg:color_fg0 bg:color_bg1)]($style)'
+
+
 [line_break]
-disabled = false
+disabled = true
 
 [character]
 disabled = false
