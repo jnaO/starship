@@ -84,7 +84,7 @@ format = '[$user ]($style)'
 [hostname]
 ssh_only = false
 ssh_symbol = ' 󰢹'
-format = '[$ssh_symbol]($style)[ \($hostname\) ]($style)'
+format = '[ \(($ssh_symbol )$hostname\) ]($style)'
 style = "bg:color_orange fg:color_fg0"
 trim_at = '.companyname.com'
 disabled = false
